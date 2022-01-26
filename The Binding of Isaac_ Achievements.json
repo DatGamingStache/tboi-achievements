@@ -1,0 +1,105 @@
+{
+  "allowHttpBackend": false,
+  "backendCommand": "",
+  "backendFolderName": "",
+  "certificateExceptions": [],
+  "extensionViews": [
+    {
+      "channelId": "72749998",
+      "configurationAnchor": "panel",
+      "displayChannelName": "datgamingstache",
+      "features": {
+        "isBitsEnabled": false,
+        "isChatEnabled": false,
+        "isSubscriptionStatusAvailable": false
+      },
+      "frameSize": {
+        "width": 1280,
+        "height": 720
+      },
+      "id": "3",
+      "isPopout": false,
+      "label": "",
+      "linked": false,
+      "linkedUserId": "",
+      "orientation": "Portrait",
+      "type": "panel",
+      "viewerType": "Logged-In Viewer"
+    },
+    {
+      "channelId": "72749998",
+      "configurationAnchor": "panel",
+      "displayChannelName": "datgamingstache",
+      "features": {
+        "isBitsEnabled": false,
+        "isChatEnabled": false,
+        "isSubscriptionStatusAvailable": false
+      },
+      "frameSize": {
+        "width": 1280,
+        "height": 720
+      },
+      "id": "4",
+      "isPopout": false,
+      "label": "",
+      "linked": true,
+      "linkedUserId": "265737932",
+      "orientation": "Portrait",
+      "type": "panel",
+      "viewerType": "Logged-In Viewer"
+    }
+  ],
+  "manifest": {
+    "anchor": "panel",
+    "assetUrls": [],
+    "authorName": "",
+    "bitsEnabled": false,
+    "canInstall": true,
+    "configUrl": "http://localhost:8080/config.html",
+    "configurationLocation": "none",
+    "description": "",
+    "eulaTosUrl": "",
+    "hasChatSupport": false,
+    "iconUrl": "",
+    "iconUrls": {},
+    "id": "6q4k3j1wf1zqj8qe61rsou3u6nymv6",
+    "installationCount": -42,
+    "liveConfigUrl": "",
+    "name": "The Binding of Isaac: Achievements",
+    "panelHeight": 300,
+    "privacyPolicyUrl": "",
+    "requestIdentityLink": false,
+    "requiredBroadcasterAbilities": [],
+    "screenshotUrls": [],
+    "sku": "",
+    "state": "Testing",
+    "subscriptionsSupportLevel": "none",
+    "summary": "This Extension will allow you and your viewers to see all of the achievements you have unlocked or yet to unlock for the binding of isaac",
+    "supportEmail": "",
+    "vendorCode": "",
+    "version": "0.0.3",
+    "viewerSummary": "",
+    "viewerUrl": "http://localhost:8080/panel.html",
+    "viewerUrls": {
+      "panel": "http://localhost:8080/panel.html"
+    },
+    "views": {
+      "panel": {
+        "viewerUrl": "http://localhost:8080/panel.html",
+        "height": 300,
+        "canLinkExternalContent": false
+      },
+      "config": {
+        "viewerUrl": "http://localhost:8080/config.html",
+        "canLinkExternalContent": false
+      }
+    },
+    "whitelistedConfigUrls": [],
+    "whitelistedPanelUrls": []
+  },
+  "frontendCommand": "pnpm run serve",
+  "frontendFolderName": "C:\\Users\\wease\\Github-Projects\\tboi-achievements",
+  "name": "The Binding of Isaac: Achievements",
+  "usingRandomFrontendHostingPort": false,
+  "version": 3
+}

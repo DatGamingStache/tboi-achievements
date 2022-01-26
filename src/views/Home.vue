@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <RouterLink to="/panel.html" class="p-2 m-2 bg-black text-white"
+    >TBOI Achievements</RouterLink
+    >
   </div>
 </template>
 
