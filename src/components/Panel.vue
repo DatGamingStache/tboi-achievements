@@ -19,8 +19,8 @@
             :style="{
               width:
                 Math.floor(
-                  (sortedAchievements[1] /
-                    (sortedAchievements[0] + sortedAchievements[1])) *
+                  (completeAchieve.length /
+                    (incompleteAchieve.length + completeAchieve.length)) *
                     100
                 ) + '%',
             }"
@@ -32,8 +32,8 @@
             >
               {{
                 Math.floor(
-                  (sortedAchievements[1] /
-                    (sortedAchievements[0] + sortedAchievements[1])) *
+                  (completeAchieve.length /
+                    (incompleteAchieve.length + completeAchieve.length)) *
                     100
                 ) + "%"
               }}
@@ -43,8 +43,8 @@
               @click="percentage = !percentage"
               class="text-black font-bold"
             >
-              {{ sortedAchievements[1] }}/{{
-                sortedAchievements[1] + sortedAchievements[0]
+              {{ completeAchieve.length }}/{{
+                completeAchieve.length + incompleteAchieve.length
               }}
             </div>
           </div>
@@ -99,10 +99,6 @@
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
       style="padding-top: 15rem"
     >
-      asdasdasd
-
-      {{ sortedAchievements[1] }}
-
       <Achievement
         :key="idx"
         v-for="(item, idx) in all
@@ -130,36 +126,13 @@ export default defineComponent({
     const all = ref(true);
     const completed = ref(false);
     const incomplete = ref(false);
-    // const data = ref([]);
-    const data = ref([
-      {
-        achieved: 1,
-        apiname: "1",
-        description: "Unlocked a new character.",
-        name: "Magdalene",
-        unlocktime: 1482603250,
-      },
-      {
-        achieved: 1,
-        apiname: "2",
-        description: "Unlocked a new character.",
-        name: "judas",
-        unlocktime: 1482603250,
-      },
-      {
-        achieved: 0,
-        apiname: "3",
-        description: "Unlocked a new character.",
-        name: "judas",
-        unlocktime: 1482603250,
-      },
-    ]);
+    const data = ref([]);
+
     const fullurl = ref(
       "https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?key=BB3A97B18B1936E63E6EC7CA90660C8E&steamid=76561198065217620&appid=250900&l=1"
     );
 
     onBeforeMount(() => {
-      fetch(fullurl.value).then((response) => console.log(response.body));
       const getAchievements = async () => {
         try {
           const response = await axios.get(fullurl.value);
@@ -210,31 +183,11 @@ export default defineComponent({
       return _.countBy(data.value, 1);
     });
 
-    const sortedAchievements = data.value.reduce((acc, value) => {
-      if (!acc[value.achieved]) {
-        acc[value.achieved] = 1;
-      } else {
-        acc[value.achieved]++;
-      }
-      console.log(acc);
-
-      return acc;
-    }, {});
-
-    const calculatedPercentage = computed(() => {
-      return Math.floor(
-        (sortedAchievements[1].value /
-          (sortedAchievements[0].value + sortedAchievements[1].value)) *
-          100
-      );
-    });
     const percentage = ref(false);
     return {
       configData: computed(() => store.getters.getConfig),
 
       percentage,
-      calculatedPercentage,
-      sortedAchievements,
       totalAchievements,
       searchQuery,
       searchedProducts,
