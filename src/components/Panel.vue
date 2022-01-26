@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!configErrorModal">
     <div class="fixed bg-darkslategray w-full" style="background: #212027">
       <div class="grid grid-cols-2 bg-darkslategray text-white items-center">
         <div class="bg-gold text-xl">Achievements</div>
@@ -112,6 +112,17 @@
       />
     </div>
   </div>
+  <div v-else class="flex items-center justify-center" style="height: 10vh">
+    <div
+      class="text-red200 bg-red50 text-2xl m-8 p-3 text-center absolute top-0 bottom-0 flex justify-center items-center"
+    >
+      <div>
+        Please check the configuration settings and make sure the 3 items
+        <span class="font-bold">[web key, steam id, steam app id] </span> are
+        set properly!
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import { ref, computed, defineComponent, onBeforeMount, onMounted } from "vue";
@@ -127,22 +138,36 @@ export default defineComponent({
     const completed = ref(false);
     const incomplete = ref(false);
     const data = ref([]);
-
-    const fullurl = ref(
-      "https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?key=BB3A97B18B1936E63E6EC7CA90660C8E&steamid=76561198065217620&appid=250900&l=1"
-    );
-
+    const configErrorModal = ref(false);
     onBeforeMount(() => {
+      const WebKey = ref();
+      const steamId = ref();
+      const steamAppId = ref();
+
+      WebKey.value = store.getters.getConfig.webKey;
+      steamId.value = store.getters.getConfig.steamId;
+      steamAppId.value = store.getters.getConfig.steamAppId;
+
       const getAchievements = async () => {
-        try {
-          const response = await axios.get(fullurl.value);
+        await axios({
+          method: "get",
+          url: "https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/",
+          params: {
+            key: WebKey.value,
+            steamid: steamId.value,
+            appid: steamAppId.value,
+            l: 1,
+          },
+        }).then(function (response) {
           data.value = response.data.playerstats.achievements;
-          console.log(response.data.playerstats.achievements);
-        } catch (error) {
-          console.error(error);
-        }
+        });
       };
-      getAchievements();
+
+      if ((WebKey.value && steamId.value && steamAppId.value !== null) || "") {
+        getAchievements();
+      } else configErrorModal.value = true;
+
+      console.log(store.getters.getConfig);
     });
 
     const searchQuery = ref("");
@@ -186,7 +211,7 @@ export default defineComponent({
     const percentage = ref(false);
     return {
       configData: computed(() => store.getters.getConfig),
-
+      configErrorModal,
       percentage,
       totalAchievements,
       searchQuery,
