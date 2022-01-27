@@ -11,7 +11,6 @@
         style="background: #212027"
         class="text-white grid grid-cols-6 gap-4 p-4 items-center"
       >
-        <!--      <div class="rounded-full bg-white text-black p-4 col-span-2">img</div>-->
         <img src="../../public/datstache.jpeg" />
         <div class="w3-light-grey w-full col-span-4">
           <div
