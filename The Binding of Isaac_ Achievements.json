@@ -66,7 +66,7 @@
     "installationCount": -42,
     "liveConfigUrl": "",
     "name": "The Binding of Isaac: Achievements",
-    "panelHeight": 300,
+    "panelHeight": 500,
     "privacyPolicyUrl": "",
     "requestIdentityLink": false,
     "requiredBroadcasterAbilities": [],
@@ -77,7 +77,7 @@
     "summary": "This Extension will allow you and your viewers to see all of the achievements you have unlocked or yet to unlock for the binding of isaac",
     "supportEmail": "",
     "vendorCode": "",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "viewerSummary": "",
     "viewerUrl": "http://localhost:8080/panel.html",
     "viewerUrls": {
@@ -86,7 +86,7 @@
     "views": {
       "panel": {
         "viewerUrl": "http://localhost:8080/panel.html",
-        "height": 300,
+        "height": 500,
         "canLinkExternalContent": false
       },
       "config": {
